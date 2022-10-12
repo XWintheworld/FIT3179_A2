@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Global Temperature Change Since 1960",
+  "width": 400,
+  "height": 200,
+  "projection": {"type": "equalEarth"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/XWintheworld/3179/main/js/ne_110m.json",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/XWintheworld/FIT3179/main/js/oceans.topojson",
+        "format": {"type": "topojson", "feature": "oceans"}
+      },
+      "mark": {"type": "geoshape", "fill": "skyblue"}
+    },
+    {
+      "transform": [
+        {
+          "calculate": "'Data is not available in ' + datum.properties.NAME",
+          "as": "note"
+        }
+      ],
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
+      "encoding": {"tooltip": {"field": "note"}}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/XWintheworld/3179/main/js/ne_110m.json",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+      },
+      "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+    },
+    
+  {"transform": [
+    {
+      "lookup": "properties.NAME",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/XWintheworld/3179/main/data/Temperature_Change.csv"
+        },
+        "key": "Country",
+        "fields": ["Temperature"]
+      }
+    },
+    {"calculate": "datum.Temperature + 0.1", "as": "Temperature Change"}
+  ],
+  "mark": {"type": "geoshape", "stroke": "white"},
+  "encoding": {
+    "color": {
+      "field": "Temperature",
+      "title": "Temperature Change (°C )",
+      "type": "quantitative",
+      "scale": { "type": "threshold", "domain": [1, 2, 3], "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"] }
+    },
+    "tooltip": [
+      {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+      {"field": "Temperature", "type": "quantitative","title": "Temperature Change(°C)"}
+    ]
+  }
+}
+]
+}

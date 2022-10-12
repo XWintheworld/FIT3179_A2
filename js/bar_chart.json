@@ -1,0 +1,12 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple bar chart with embedded data.",
+  "data": {
+          "url": "https://raw.githubusercontent.com/XWintheworld/FIT3179/main/data/Temperature_Change.csv"
+        },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Country", "type": "nominal", "axis": {"labelAngle": 0}},
+    "y": {"field": "Temperature", "type": "quantitative"}
+  }
+}

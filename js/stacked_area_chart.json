@@ -1,0 +1,19 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400, "height": 300,
+  "data": {"url": "https://raw.githubusercontent.com/XWintheworld/FIT3179/main/data/co2_data_long.csv"},
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "timeUnit": "year", "field": "year",
+      "axis": {"format": "%Y"}
+    },
+    "y": {
+      "aggregate": "sum", "field": "CO2"
+    },
+    "color": {
+      "field": "fuel_type",
+      "scale": {"scheme": "category20b"}
+    }
+  }
+}

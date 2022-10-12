@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "title": "Climate Change",
+  "data": {
+    "url": "https://raw.githubusercontent.com/XWintheworld/FIT3179/main/data/CO2_Tree_Temperature.csv"
+  },
+  "params": [
+    {
+      "name": "AverageTemperature_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 29,
+        "step": 0.5,
+        "name": "Minimum Temperature: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.TreeCoverLoss_ha > 0"},
+    {"filter": "datum.GrossEmissions_Co2_all_gases_Mg > 0"},
+    {"filter": "datum.AverageTemperature > AverageTemperature_Above"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "TreeCoverLoss_ha",
+      "type": "quantitative",
+      "title": "TreeCoverLoss/ha",
+      "axis": {"tickCount": 7}
+      
+    },
+    "y": {
+      "field": "GrossEmissions_Co2_all_gases_Mg",
+      "type": "quantitative",
+      "axis": {"tickCount": 6}
+      
+    }
+  },
+  "layer": [
+    {
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "AverageTemperature",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [5, 10, 15, 20, 25],
+            "range": [10, 50, 150, 200, 300, 400]
+          }
+          
+        },
+        
+        
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "TreeCoverLoss_ha", "type": "quantitative", "format": ","},
+          {"field": "GrossEmissions_Co2_all_gases_Mg", "type": "quantitative", "format": ","},
+          {"field": "AverageTemperature", "type": "quantitative", "format": ","}
+          
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": " datum['Country'] == 'Australia'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "TreeCoverLoss_ha", "type": "quantitative", "format": ","},
+          {"field": "GrossEmissions_Co2_all_gases_Mg", "type": "quantitative", "format": ","},
+          {"field": "AverageTemperature", "type": "quantitative", "format": ","}
+         
+        ]
+      }
+    }
+  ]
+}
