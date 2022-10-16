@@ -2,8 +2,13 @@ body *{
   font-family: 'Open Sans', sans-serif;
 }
 
+
+
 h1 {
-  font-weight: 900;
+  font-family: fantasy;
+    font-size: 50px;
+    color: rgba(160, 27, 9, 0.856);
+    text-align: center;
 }
 
 body {
@@ -11,7 +16,7 @@ body {
 }
 
 .page {
-  width: 850px;
+  width: 900px;
   background-color: white;
   margin: auto;
   padding: 50px;
@@ -41,4 +46,22 @@ h1 {
 
 .small-font {
   font-size: 14px;
+}
+
+h2{
+  font-size: 25px;
+  color: rgba(160, 27, 9, 0.856);
+}
+
+.a1 {
+  font-size: 14px;
+  color:grey;
+}
+
+.foot{
+  text-align: center;
+}
+
+.s1{
+  text-align: center;
 }

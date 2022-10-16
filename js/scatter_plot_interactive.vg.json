@@ -1,17 +1,19 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "title": "Climate Change",
+  "title": "CO2 Emission and Tree Cover Loss",
   "data": {
     "url": "https://raw.githubusercontent.com/XWintheworld/FIT3179/main/data/CO2_Tree_Temperature.csv"
   },
+  "width": 351,
+  "height":285,
   "params": [
     {
       "name": "AverageTemperature_Above",
       "value": 0,
       "bind": {
         "input": "range",
-        "min": 0,
+        "min": 19,
         "max": 29,
         "step": 0.5,
         "name": "Minimum Temperature: "
@@ -27,12 +29,13 @@
     "x": {
       "field": "TreeCoverLoss_ha",
       "type": "quantitative",
-      "title": "TreeCoverLoss/ha",
+      "title": "Tree Cover Loss (ha)",
       "axis": {"tickCount": 7}
       
     },
     "y": {
       "field": "GrossEmissions_Co2_all_gases_Mg",
+      "title": "Gross Co2 Emissions (Mg)",
       "type": "quantitative",
       "axis": {"tickCount": 6}
       
@@ -44,6 +47,7 @@
       "encoding": {
         "size": {
           "field": "AverageTemperature",
+          "title": "Average Temperature (°C)",
           "type": "quantitative",
           "scale": {
             "type": "threshold",
@@ -52,23 +56,20 @@
           }
           
         },
+        "color": {
+          "value": "#fd8d3c"
+        }
         
         
-        "tooltip": [
-          {"field": "Country", "type": "nominal"},
-          {"field": "TreeCoverLoss_ha", "type": "quantitative", "format": ","},
-          {"field": "GrossEmissions_Co2_all_gases_Mg", "type": "quantitative", "format": ","},
-          {"field": "AverageTemperature", "type": "quantitative", "format": ","}
-          
-        ]
       }
     },
     {
       "mark": {
         "type": "text",
-        "align": "right",
+        "align": "left",
         "baseline": "middle",
-        "dx": -12,
+        "dx": 1,
+        "dy":-10,
         "fontSize": 11.5,
         "fontStyle": "italic"
       },
@@ -84,9 +85,9 @@
         },
         "tooltip": [
           {"field": "Country", "type": "nominal"},
-          {"field": "TreeCoverLoss_ha", "type": "quantitative", "format": ","},
-          {"field": "GrossEmissions_Co2_all_gases_Mg", "type": "quantitative", "format": ","},
-          {"field": "AverageTemperature", "type": "quantitative", "format": ","}
+          {"field": "TreeCoverLoss_ha", "type": "quantitative", "title": "Tree Cover Loss (ha)","format": ","},
+          {"field": "GrossEmissions_Co2_all_gases_Mg", "type": "quantitative","title": "Gross Co2 Emissions (Mg)", "format": ","},
+          {"field": "AverageTemperature", "type": "quantitative","title": "Average Temperature (°C)", "format": ","}
          
         ]
       }

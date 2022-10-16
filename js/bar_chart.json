@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top 10 Warming Countries",
   "description": "A simple bar chart with embedded data.",
   "data": {
           "url": "https://raw.githubusercontent.com/XWintheworld/FIT3179/main/data/Temperature_Change.csv"

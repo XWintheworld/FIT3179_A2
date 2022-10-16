@@ -1,19 +1,29 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 400, "height": 300,
-  "data": {"url": "https://raw.githubusercontent.com/XWintheworld/FIT3179/main/data/co2_data_long.csv"},
+  "title": "CO2 Emissions by Fuel Type",
+  "width": 461, "height": 303,
+  "data": {"url": "https://raw.githubusercontent.com/XWintheworld/FIT3179_A2/main/data/co2_data_long.csv"},
   "mark": "area",
   "encoding": {
     "x": {
       "timeUnit": "year", "field": "year",
+      "title":"Year",
       "axis": {"format": "%Y"}
     },
     "y": {
-      "aggregate": "sum", "field": "CO2"
+      "aggregate": "sum", "field": "CO2",
+      "title":"CO2 Emissions"
     },
     "color": {
       "field": "fuel_type",
-      "scale": {"scheme": "category20b"}
-    }
+      "title":"Fuel Type",
+      "type": "nominal"
+    },
+    "tooltip": [
+      {"field": "fuel_type",  "title":"Fuel Type","type": "nominal"},
+      {"field": "CO2", "aggregate": "sum", "title": "CO2 Emissions","format": ","},
+      {"field": "year", "timeUnit": "year","type": "quantitative","title": "Year", "format": "%Y"}
+     
+    ]
   }
 }
