@@ -55,7 +55,8 @@
       "field": "Temperature",
       "title": "Temperature Change (°C )",
       "type": "quantitative",
-      "scale": { "type": "threshold", "domain": [1, 2, 3], "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]}
+      "scale": { "type": "threshold", "domain": [1, 2, 3,4], "range": ["#fdbe85", "#fd8d3c", "#e6550d",
+      "#bd0026", "#7f0000"] }
     },
     "opacity": {
       "condition": {"param": "countrySelection", "value": 1},
@@ -141,7 +142,8 @@
       "field": "Temperature",
       "title": "Temperature Change (°C )",
       "type": "quantitative",
-      "scale": { "type": "threshold", "domain": [1, 2, 3], "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"] }
+      "scale": { "type": "threshold", "domain": [1, 2, 3,4], "range": ["#fdbe85", "#fd8d3c", "#e6550d",
+      "#bd0026", "#7f0000"] }
     },
     "opacity": {
       "condition": {"param": "countrySelection", "value": 1},
