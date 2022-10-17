@@ -124,7 +124,7 @@
   "height": 150,
   "description": "A simple bar chart with embedded data.",
   "data": {
-          "url": "https://raw.githubusercontent.com/XWintheworld/FIT3179/main/data/Temperature_Change.csv",
+          "url": "https://raw.githubusercontent.com/XWintheworld/FIT3179_A2/main/data/Temperature_Change_Rank.csv",
           "fields": ["Temperature","Country"]
         },
 
